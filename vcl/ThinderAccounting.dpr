@@ -1,8 +1,8 @@
 program ThinderAccounting;
 
 uses
-  Winapi.Messages,
   Vcl.Forms,
+  Vcl.Dialogs,
   UFrmMain in 'src\forms\UFrmMain.pas' {Form1},
   UAppGlobals in 'src\globals\UAppGlobals.pas',
   UAppSettings in 'src\globals\UAppSettings.pas';
@@ -19,6 +19,15 @@ begin
   end
   else
   begin
-
+    MessageDlg(
+      '''
+      Cannot launch application. Please check
+      that database cnfiguration
+      exists in settings.ini
+      ''',
+      TMsgDlgType.mtError,
+      [mbOK],
+      0
+    );
   end;
 end.
