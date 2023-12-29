@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{B8C0A475-FC01-48E4-9104-2EF200FEC001}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="vcl\ThinderAccounting.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="ThinderAccounting">
+        <MSBuild Projects="vcl\ThinderAccounting.dproj"/>
+    </Target>
+    <Target Name="ThinderAccounting:Clean">
+        <MSBuild Projects="vcl\ThinderAccounting.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ThinderAccounting:Make">
+        <MSBuild Projects="vcl\ThinderAccounting.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="ThinderAccounting"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="ThinderAccounting:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="ThinderAccounting:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
