@@ -3,7 +3,8 @@ program ThinderAccounting;
 uses
   Vcl.Forms,
   UFrmMain in 'src\forms\UFrmMain.pas' {Form1},
-  UAppGlobals in 'src\globals\UAppGlobals.pas';
+  UAppGlobals in 'src\globals\UAppGlobals.pas',
+  UAppSettings in 'src\globals\UAppSettings.pas';
 
 {$R *.res}
 
