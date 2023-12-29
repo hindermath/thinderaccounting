@@ -143,6 +143,7 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\globals\UAppGlobals.pas"/>
+        <None Include="..\bin\settings.ini"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -173,6 +174,12 @@
                 <DeployFile LocalName="..\bin\ThinderAccounting.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>ThinderAccounting.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\bin\settings.ini" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
