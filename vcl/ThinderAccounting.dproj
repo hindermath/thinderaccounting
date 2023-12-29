@@ -76,18 +76,26 @@
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
         <BT_BuildType>Debug</BT_BuildType>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=de.tmyttmaap.$(MSBuildProjectName);ProductName=Thinder Accounting;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
+        <DCC_ExeOutput>C:\Users\hinde\OneDrive\Dokumente\Embarcadero\Studio\Projekte\thinderaccounting\bin\</DCC_ExeOutput>
+        <DCC_UnitSearchPath>C:\Users\hinde\OneDrive\Dokumente\Embarcadero\Studio\Projekte\thinderaccounting\modelbpl\src;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <AppDPIAwarenessMode>none</AppDPIAwarenessMode>
+        <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win64)'!=''">
         <DCC_UsePackage>vclwinx;fmx;vclie;DbxCommonDriver;bindengine;IndyIPCommon;VCLRESTComponents;FireDACCommonODBC;FMX_FlexCel_Components;appanalytics;IndyProtocols;vclx;dbxcds;vcledge;IcsCommonD12Run;TMSVCLSecuritySystemPkgUIDXE15;FmxTeeUI;VCLTMSFNCChartPkgDXE15;FlexCel_Pdf;FMXTMSFNCChartPkgDXE15;VCLTMSFNCAppToolsPkgDXE15;FireDACSqliteDriver;DbxClientDriver;TMSScripter_IDE;soapmidas;TeeUI;dbexpress;IcsVclD12Run;inet;vcltouch;FlexCel_dll;FMX_FlexCel_Core;fmxdae;VCL_FlexCel_Core;CustomIPTransport;TMSQueryStudio;IndySystem;ibxbindings;vclFireDAC;FlexCel_Render;FireDACCommon;TMSScripter_VCL;bindcompdbx;rtl;FireDACMySQLDriver;VCL_FlexCel_Components;DBXSqliteDriver;TMSVCLUIPackPkgDXE15;vclimg;inetdbxpress;FireDAC;xmlrtl;ibxpress;dsnap;vclib;fmxobj;bindcompvclsmp;FMXTMSFNCUIPackPkgDXE15;TMSScripter_Memo;FlexCel_Report;FMXTMSFNCAppToolsPkgDXE15;FMXTMSFNCCorePkgDXE15;FireDACCommonDriver;IndyIPClient;bindcompvclwinx;TMSMemInsightPkgDXE15;TMSVCLSecuritySystemPkgCoreDXE15;bindcompfmx;TMSVCLUIPackPkgExDXE15;inetdb;AdvChartDXE15;ibmonitor;Tee;vclactnband;TMSVCLUIPackPkgXlsDXE15;TMSScripter;fmxFireDAC;DBXMySQLDriver;VclSmp;fmxase;dbrtl;TMSDiagram;TeeDB;FlexCel_XlsAdapter;FireDACMSAccDriver;TMSAnalyticsPkgDXE15;IcsFmxD12Run;TMSWorkflow;FMXTMSFNCCloudPackPkgDXE15;FMXTMSFNCMapsPkgDXE15;vcldsnap;DBXInterBaseDriver;Skia.Package.VCL;VCLTMSFNCUIPackPkgDXE15;vcldb;VCLTMSFNCDashboardPackPkgDXE15;FlexCel_Core;bindcomp;IndyCore;RESTBackendComponents;FireDACADSDriver;RESTComponents;IndyIPServer;vcl;dsnapxml;adortl;dsnapcon;TMSScripter_Legacy;VCLTMSFNCMapsPkgDXE15;TMSVCLIWPkgDXE15;FireDACPgDriver;tethering;bindcompvcl;CloudService;VCLTMSFNCCloudPackPkgDXE15;FMXTee;VCLTMSFNCCorePkgDXE15;soaprtl;soapserver;FireDACIBDriver;$(DCC_UsePackage)</DCC_UsePackage>
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;$(DCC_Namespace)</DCC_Namespace>
         <BT_BuildType>Debug</BT_BuildType>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=de.tmyttmaap.$(MSBuildProjectName);ProductName=Thinder Accounting;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
+        <DCC_UnitSearchPath>C:\Users\hinde\OneDrive\Dokumente\Embarcadero\Studio\Projekte\thinderaccounting\modelbpl\src;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_ExeOutput>C:\Users\hinde\OneDrive\Dokumente\Embarcadero\Studio\Projekte\thinderaccounting\bin\</DCC_ExeOutput>
+        <AppDPIAwarenessMode>none</AppDPIAwarenessMode>
+        <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
         <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
@@ -102,9 +110,17 @@
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <VerInfo_Build>2</VerInfo_Build>
+        <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.2;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=de.tmyttmaap.$(MSBuildProjectName);ProductName=Thinder Accounting;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <VerInfo_Build>1</VerInfo_Build>
+        <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.1;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=de.tmyttmaap.$(MSBuildProjectName);ProductName=Thinder Accounting;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
@@ -126,6 +142,7 @@
             <Form>Form1</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="src\globals\UAppGlobals.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -146,9 +163,14 @@
                 <Source>
                     <Source Name="MainSource">ThinderAccounting.dpr</Source>
                 </Source>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k290.bpl">Microsoft Office 2000 Beispiele für gekapselte Komponenten für Automatisierungsserver</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp290.bpl">Microsoft Office XP Beispiele für gekapselte Komponenten für Automation Server</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\23.0\Bpl\TMSCloudPkgDEDXE15.bpl">TMS VCL Cloud Pack design time support</Excluded_Packages>
+                </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="4">
-                <DeployFile LocalName="Win32\Debug\ThinderAccounting.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="..\bin\ThinderAccounting.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>ThinderAccounting.exe</RemoteName>
                         <Overwrite>true</Overwrite>
