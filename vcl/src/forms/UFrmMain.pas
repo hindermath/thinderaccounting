@@ -11,9 +11,7 @@ uses
   Vcl.Graphics,
   Vcl.Controls,
   Vcl.Forms,
-  Vcl.Dialogs,
-  UAppGlobals,
-  UAppSettings
+  Vcl.Dialogs
   ;
 
 type
