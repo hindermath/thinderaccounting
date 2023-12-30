@@ -136,6 +136,10 @@
         </DCCReference>
         <DCCReference Include="src\globals\UAppGlobals.pas"/>
         <DCCReference Include="src\globals\UAppSettings.pas"/>
+        <DCCReference Include="src\dbmgr\UDataManager.pas">
+            <Form>DataManager</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
         <None Include="..\bin\settings.ini"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
