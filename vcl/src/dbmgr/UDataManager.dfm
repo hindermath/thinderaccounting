@@ -1,4 +1,5 @@
 object DataManager: TDataManager
+  OnCreate = DataModuleCreate
   Height = 422
   Width = 399
   PixelsPerInch = 144
