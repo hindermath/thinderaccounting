@@ -21,10 +21,6 @@ uses
 
 type
   TForm1 = class(TForm)
-    Connection: TAureliusConnection;
-    MemConnection: TAureliusConnection;
-    SQLiteUnits: TFDPhysSQLiteDriverLink;
-    FDConnection: TFDConnection;
   private
     { Private-Deklarationen }
   public
