@@ -57,7 +57,7 @@
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=de.tmyttmaap.$(MSBuildProjectName);ProductName=Thinder Accounting;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=TMyTTMAAP;FileDescription=$(MSBuildProjectName) VCL Desktop Application;FileVersion=1.0.0.0;InternalName=ThinderAccounting;LegalCopyright=;LegalTrademarks=;OriginalFilename=ThinderAccounting;ProgramID=de.tmyttmaap.$(MSBuildProjectName);ProductName=Thinder Accounting;ProductVersion=1.0.0.0;Comments=Build an accounting project with TMS Aurelius, XData, FlexCel for desktop and Web</VerInfo_Keys>
         <VerInfo_Locale>1033</VerInfo_Locale>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
@@ -73,9 +73,9 @@
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
-        <VerInfo_Build>11</VerInfo_Build>
+        <VerInfo_Build>15</VerInfo_Build>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <VerInfo_Keys>CompanyName=TMyTTMAAP;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.11;InternalName=ThinderAccounting;LegalCopyright=;LegalTrademarks=;OriginalFilename=ThinderAccounting;ProgramID=de.tmyttmaap.$(MSBuildProjectName);ProductName=Thinder Accounting;ProductVersion=1.0.0.0;Comments=Build an accounting project with TMS Aurelius, XData, FlexCel for desktop and Web</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=TMyTTMAAP;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.15;InternalName=ThinderAccounting;LegalCopyright=;LegalTrademarks=;OriginalFilename=ThinderAccounting;ProgramID=de.tmyttmaap.$(MSBuildProjectName);ProductName=Thinder Accounting;ProductVersion=1.0.0.0;Comments=Build an accounting project with TMS Aurelius, XData, FlexCel for desktop and Web</VerInfo_Keys>
         <VerInfo_Locale>1033</VerInfo_Locale>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
