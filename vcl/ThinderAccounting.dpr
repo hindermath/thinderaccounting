@@ -2,8 +2,10 @@ program ThinderAccounting;
 
 uses
   System.UITypes,
+
   Vcl.Forms,
   Vcl.Dialogs,
+
   UFrmMain in 'src\forms\UFrmMain.pas' {Form1},
   UAppGlobals in 'src\globals\UAppGlobals.pas',
   UAppSettings in 'src\globals\UAppSettings.pas',
