@@ -8,13 +8,13 @@
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <ProjectGuid>{C078512B-3C21-42AB-A6BF-E54F8DC5CF50}</ProjectGuid>
         <ProjectVersion>20.1</ProjectVersion>
-        <TargetedPlatforms>2</TargetedPlatforms>
+        <TargetedPlatforms>1</TargetedPlatforms>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
         <Base>true</Base>
     </PropertyGroup>
-    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Base)'=='true') or '$(Base_Win64)'!=''">
-        <Base_Win64>true</Base_Win64>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
+        <Base_Win32>true</Base_Win32>
         <CfgParent>Base</CfgParent>
         <Base>true</Base>
     </PropertyGroup>
@@ -23,8 +23,8 @@
         <CfgParent>Base</CfgParent>
         <Base>true</Base>
     </PropertyGroup>
-    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Cfg_1)'=='true') or '$(Cfg_1_Win64)'!=''">
-        <Cfg_1_Win64>true</Cfg_1_Win64>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_1)'=='true') or '$(Cfg_1_Win32)'!=''">
+        <Cfg_1_Win32>true</Cfg_1_Win32>
         <CfgParent>Cfg_1</CfgParent>
         <Cfg_1>true</Cfg_1>
         <Base>true</Base>
@@ -34,8 +34,8 @@
         <CfgParent>Base</CfgParent>
         <Base>true</Base>
     </PropertyGroup>
-    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win64)'!=''">
-        <Cfg_2_Win64>true</Cfg_2_Win64>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win32)'!=''">
+        <Cfg_2_Win32>true</Cfg_2_Win32>
         <CfgParent>Cfg_2</CfgParent>
         <Cfg_2>true</Cfg_2>
         <Base>true</Base>
@@ -47,17 +47,16 @@
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
         <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(Base_Win64)'!=''">
+    <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <AppDPIAwarenessMode>none</AppDPIAwarenessMode>
         <BT_BuildType>Debug</BT_BuildType>
         <DCC_ExeOutput>C:\Users\hinde\OneDrive\Dokumente\Embarcadero\Studio\Projekte\thinderaccounting\bin\</DCC_ExeOutput>
-        <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;$(DCC_Namespace)</DCC_Namespace>
-        <DCC_UnitSearchPath>C:\Users\hinde\OneDrive\Dokumente\Embarcadero\Studio\Projekte\thinderaccounting\modelbpl\src;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
-        <DCC_UsePackage>vclwinx;fmx;vclie;DbxCommonDriver;bindengine;IndyIPCommon;VCLRESTComponents;FireDACCommonODBC;FMX_FlexCel_Components;appanalytics;IndyProtocols;vclx;dbxcds;vcledge;IcsCommonD12Run;TMSVCLSecuritySystemPkgUIDXE15;FmxTeeUI;VCLTMSFNCChartPkgDXE15;FlexCel_Pdf;FMXTMSFNCChartPkgDXE15;VCLTMSFNCAppToolsPkgDXE15;FireDACSqliteDriver;DbxClientDriver;TMSScripter_IDE;soapmidas;TeeUI;dbexpress;IcsVclD12Run;inet;vcltouch;FlexCel_dll;FMX_FlexCel_Core;fmxdae;VCL_FlexCel_Core;CustomIPTransport;TMSQueryStudio;IndySystem;ibxbindings;vclFireDAC;FlexCel_Render;FireDACCommon;TMSScripter_VCL;bindcompdbx;rtl;FireDACMySQLDriver;VCL_FlexCel_Components;DBXSqliteDriver;TMSVCLUIPackPkgDXE15;vclimg;inetdbxpress;FireDAC;xmlrtl;ibxpress;dsnap;vclib;fmxobj;bindcompvclsmp;FMXTMSFNCUIPackPkgDXE15;TMSScripter_Memo;FlexCel_Report;FMXTMSFNCAppToolsPkgDXE15;FMXTMSFNCCorePkgDXE15;FireDACCommonDriver;IndyIPClient;bindcompvclwinx;TMSMemInsightPkgDXE15;TMSVCLSecuritySystemPkgCoreDXE15;bindcompfmx;TMSVCLUIPackPkgExDXE15;inetdb;AdvChartDXE15;ibmonitor;Tee;vclactnband;TMSVCLUIPackPkgXlsDXE15;TMSScripter;fmxFireDAC;DBXMySQLDriver;VclSmp;fmxase;dbrtl;TMSDiagram;TeeDB;FlexCel_XlsAdapter;FireDACMSAccDriver;TMSAnalyticsPkgDXE15;IcsFmxD12Run;TMSWorkflow;FMXTMSFNCCloudPackPkgDXE15;FMXTMSFNCMapsPkgDXE15;vcldsnap;DBXInterBaseDriver;Skia.Package.VCL;VCLTMSFNCUIPackPkgDXE15;vcldb;VCLTMSFNCDashboardPackPkgDXE15;FlexCel_Core;bindcomp;IndyCore;RESTBackendComponents;FireDACADSDriver;RESTComponents;IndyIPServer;vcl;dsnapxml;adortl;dsnapcon;TMSScripter_Legacy;VCLTMSFNCMapsPkgDXE15;TMSVCLIWPkgDXE15;FireDACPgDriver;tethering;bindcompvcl;CloudService;VCLTMSFNCCloudPackPkgDXE15;FMXTee;VCLTMSFNCCorePkgDXE15;soaprtl;soapserver;FireDACIBDriver;$(DCC_UsePackage)</DCC_UsePackage>
+        <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
+        <DCC_UnitSearchPath>C:\Users\hinde\OneDrive\Dokumente\Embarcadero\Studio\Projekte\thinderaccounting\modelbpl;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <VerInfo_Keys>CompanyName=TMyTTMAAP;FileDescription=$(MSBuildProjectName) VCL Desktop Application;FileVersion=1.0.0.0;InternalName=ThinderAccounting;LegalCopyright=;LegalTrademarks=;OriginalFilename=ThinderAccounting;ProgramID=de.tmyttmaap.$(MSBuildProjectName);ProductName=Thinder Accounting;ProductVersion=1.0.0.0;Comments=Build an accounting project with TMS Aurelius, XData, FlexCel for desktop and Web</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <VerInfo_Locale>1033</VerInfo_Locale>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
@@ -70,12 +69,11 @@
         <DCC_RangeChecking>true</DCC_RangeChecking>
         <DCC_RemoteDebug>true</DCC_RemoteDebug>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
+    <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
-        <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
-        <VerInfo_Build>16</VerInfo_Build>
+        <VerInfo_Build>3</VerInfo_Build>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <VerInfo_Keys>CompanyName=TMyTTMAAP;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.16;InternalName=ThinderAccounting;LegalCopyright=;LegalTrademarks=;OriginalFilename=ThinderAccounting;ProgramID=de.tmyttmaap.$(MSBuildProjectName);ProductName=Thinder Accounting;ProductVersion=1.0.0.0;Comments=Build an accounting project with TMS Aurelius, XData, FlexCel for desktop and Web</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.3;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <VerInfo_Locale>1033</VerInfo_Locale>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
@@ -84,7 +82,7 @@
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
         <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
+    <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
     </PropertyGroup>
     <ItemGroup>
@@ -124,8 +122,8 @@
                 <Excluded_Packages/>
             </Delphi.Personality>
             <Platforms>
-                <Platform value="Win32">False</Platform>
-                <Platform value="Win64">True</Platform>
+                <Platform value="Win32">True</Platform>
+                <Platform value="Win64">False</Platform>
             </Platforms>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>

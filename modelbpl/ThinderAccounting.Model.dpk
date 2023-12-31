@@ -30,6 +30,12 @@ package ThinderAccounting.Model;
 {$IMPLICITBUILD ON}
 
 requires
-  rtl;
+  rtl,
+  dbrtl,
+  tmsbcl,
+  aurelius;
+
+contains
+  UDocument in 'src\UDocument.pas';
 
 end.
