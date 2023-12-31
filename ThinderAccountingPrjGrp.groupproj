@@ -6,6 +6,9 @@
         <Projects Include="vcl\ThinderAccounting.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="modelbpl\ThinderAccounting.Model.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -23,14 +26,23 @@
     <Target Name="ThinderAccounting:Make">
         <MSBuild Projects="vcl\ThinderAccounting.dproj" Targets="Make"/>
     </Target>
+    <Target Name="ThinderAccounting_Model">
+        <MSBuild Projects="modelbpl\ThinderAccounting.Model.dproj"/>
+    </Target>
+    <Target Name="ThinderAccounting_Model:Clean">
+        <MSBuild Projects="modelbpl\ThinderAccounting.Model.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ThinderAccounting_Model:Make">
+        <MSBuild Projects="modelbpl\ThinderAccounting.Model.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="ThinderAccounting"/>
+        <CallTarget Targets="ThinderAccounting;ThinderAccounting_Model"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="ThinderAccounting:Clean"/>
+        <CallTarget Targets="ThinderAccounting:Clean;ThinderAccounting_Model:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="ThinderAccounting:Make"/>
+        <CallTarget Targets="ThinderAccounting:Make;ThinderAccounting_Model:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
