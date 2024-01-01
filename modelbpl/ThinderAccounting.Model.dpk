@@ -36,6 +36,7 @@ requires
 
 contains
   UDocument in 'src\UDocument.pas',
-  UCustomer in 'src\UCustomer.pas';
+  UCustomer in 'src\UCustomer.pas',
+  UTransaction in 'src\UTransaction.pas';
 
 end.
