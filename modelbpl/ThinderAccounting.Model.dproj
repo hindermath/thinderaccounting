@@ -70,6 +70,7 @@
         <DCCReference Include="tmsbcl.dcp"/>
         <DCCReference Include="aurelius.dcp"/>
         <DCCReference Include="src\UDocument.pas"/>
+        <DCCReference Include="src\UCustomer.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

@@ -25,7 +25,6 @@ package ThinderAccounting.Model;
 {$IMAGEBASE $400000}
 {$DEFINE DEBUG}
 {$ENDIF IMPLICITBUILDING}
-{$DESCRIPTION 'Thinder Accounting Entity Model Package'}
 {$DESIGNONLY}
 {$IMPLICITBUILD ON}
 
@@ -36,6 +35,7 @@ requires
   aurelius;
 
 contains
-  UDocument in 'src\UDocument.pas';
+  UDocument in 'src\UDocument.pas',
+  UCustomer in 'src\UCustomer.pas';
 
 end.

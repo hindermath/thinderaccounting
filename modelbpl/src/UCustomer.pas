@@ -14,71 +14,36 @@
 {* The author and the company disclaim all liabilities for any damages or       *}
 {* losses arising from the use or misuse of this code. Use at your own risk.    *}
 {********************************************************************************}
-unit UFrmMain;
+unit UCustomer;
 
 interface
-
 uses
-   Winapi.Windows
- , Winapi.Messages
-
- , System.SysUtils
- , System.Variants
- , System.Classes
- , System.Generics.Collections
+   Aurelius.Mapping.AutoMapping
+ , Aurelius.Mapping.Attributes
+ , Aurelius.Mapping.Metadata
+ , Aurelius.Mapping.Explorer
+ , Aurelius.Types.Blob
 
  , Bcl.Types.Nullable
- , Data.DB
 
- , Vcl.Graphics
- , Vcl.Controls
- , Vcl.Forms
- , Vcl.Dialogs
- , Vcl.Grids
- , Vcl.DBGrids
+ , System.SysUtils
+ , System.Generics.Collections
 
- , FireDAC.Stan.ExprFuncs
- , FireDAC.Phys.SQLiteWrapper.Stat
- , FireDAC.Phys.SQLiteDef
- , FireDAC.Stan.Intf
- , FireDAC.Stan.Option
- , FireDAC.Stan.Error
- , FireDAC.UI.Intf
- , FireDAC.Phys.Intf
- , FireDAC.Stan.Def
- , FireDAC.Stan.Pool
- , FireDAC.Stan.Async
- , FireDAC.Phys
- , FireDAC.VCLUI.Wait
- , FireDAC.Comp.Client
- , FireDAC.Phys.SQLite
-
- , Aurelius.Bind.BaseDataset
- , Aurelius.Bind.Dataset
-
-  ;
+ ;
 
 type
-  TForm1 = class(TForm)
-    Documents: TAureliusDataset;
-    DocumentsSelf: TAureliusEntityField;
-    DocumentsId: TIntegerField;
-    DocumentsDocument: TBlobField;
-    DocumentsOriginalFilename: TStringField;
-    DocumentsKeyFilename: TStringField;
-    sourceDocuments: TDataSource;
-    DocumentGrid: TDBGrid;
+  [Entity]
+  [Automapping]
+  TCustomer = class
   private
-    { Private-Deklarationen }
-  public
-    { Public-Deklarationen }
-  end;
 
-var
-  Form1: TForm1;
+  public
+
+  end;
 
 implementation
 
-{$R *.dfm}
+initialization
+  RegisterEntity(TCustomer);
 
 end.
