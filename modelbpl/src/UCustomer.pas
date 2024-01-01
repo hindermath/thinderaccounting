@@ -36,12 +36,44 @@ type
   [Automapping]
   TCustomer = class
   private
+    FId: Integer;
+    [Column('Address',[], 2048)]
+    FAddress: String;
+    FContact: String;
+    FEmail: String;
+    [Column('Name', [TColumnProp.Unique])]
+    FName: String;
+
+    function GetAddressExcel: String;
 
   public
+    constructor Create;
+
+    property Id: Integer read FId write FId;
+    property Address: String read FAddress write FAddress;
+    property Contact: String read FContact write FContact;
+    property EMail: String read FEmail write FEmail;
+    property Name: String read FName write FName;
+    property AddressExcel: String read GetAddressExcel;
 
   end;
 
 implementation
+const
+  cCarriageReturn = #13;
+
+constructor TCustomer.Create;
+begin
+  FAddress  := String.Empty;
+  FContact  := String.Empty;
+  FEmail    := String.Empty;
+  FName     := String.Empty;
+end;
+
+function TCustomer.GetAddressExcel: string;
+begin
+  Result := Address.Replace(cCarriageReturn, String.Empty);
+end;
 
 initialization
   RegisterEntity(TCustomer);
