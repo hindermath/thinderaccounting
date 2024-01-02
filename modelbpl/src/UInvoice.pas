@@ -43,13 +43,99 @@ type
     Overpaid
   );
 
-  []
+  [Entity]
+  [Automapping]
+  TInvoicePayment = class
+  private
+    FId: Integer;
+    FPaidOn: TDate;
+    FAmount: Double;
+    [Association([], CascadeTypeAllButRemove)]
+    FInvoice: TInvoice;
+  public
+    constructor Create;
+
+    property ID: Integer read FId write FId;
+    property PaidOn: TDate read FPaidOn write FPaidOn;
+    property Amount: Double read FAmount write FAmount;
+    property Invoice: TInvoice read FInvoice write FInvoice;
+  end;
+
+  [Entity]
+  [Automapping]
   TInvoice = class
   private
 
   public
 
   end;
+
+  TInvoicePayments = class( TList<TInvoicePayment> )
+  public
+    function LastPaymentDate: NullableDate;
+  end;
+
+  [Entity]
+  [Automapping]
+  TInvoiceItem = class
+  private
+    FCategory: Integer;
+    [Column('Description', [], 5000)]
+    FDescription: String;
+    FId: Integer;
+    FIdx: Integer;
+    [Association([], CascadeTypeAllButRemove)]
+    FInvoice: TInvoice;
+    FQuantity: Integer;
+    FValue: Integer;
+    function GetTotalValue: Double;
+
+  public
+    property Category: Integer read FCategory write FCategory;
+    property Description: String read FDescription write FDescription;
+    property Id: Integer read FId write FId;
+    property Idx: Integer read FIdx write FIdx;
+    property Invoice: TInvoice read FInvoice write FInvoice;
+    property Quantity: Integer read FQuantity write FQuantity;
+    property Value: Integer read FValue write FValue;
+
+
+
+  end;
+
 IMPLEMENTATION
+
+constructor TInvoicePayment.Create;
+begin
+  inherited;
+
+end;
+
+function TInvoicePayments.LastPaymentDate: NullableDate;
+begin
+  if self.Count = 0 then
+  begin
+    Result := SNull;
+    Exit;
+  end;
+
+  Result := self.Items[0].PaidOn;
+
+  for var i := 1 to self.Count - 1 do
+  begin
+    var LPayment := self.Items[i];
+    if Result < LPayment.PaidOn then
+      Result := LPayment.PaidOn;
+  end;
+end;
+
+function TInvoiceItem.GetTotalValue: Double;
+begin
+  Result := Quantity * Value;
+end;
+
+initialization
+  RegisterEntity(TInvoicePayment);
+  RegisterEntity(TInvoice);
 
 END.
