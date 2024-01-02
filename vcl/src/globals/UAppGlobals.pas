@@ -14,107 +14,107 @@
 {* The author and the company disclaim all liabilities for any damages or       *}
 {* losses arising from the use or misuse of this code. Use at your own risk.    *}
 {********************************************************************************}
-unit UAppGlobals;
+UNIT UAppGlobals;
 
-interface
+INTERFACE
 
-type
-  TAppGlobals = class
+TYPE
+  TAppGlobals = CLASS
   public
-    class function AppTitle: String;
-    class function AppVersion: String;
-    class function AppFullName: String;
+    CLASS FUNCTION AppTitle: STRING;
+    CLASS FUNCTION AppVersion: STRING;
+    CLASS FUNCTION AppFullName: STRING;
 
-    class function DefaultGridHeaderFontSize: Integer;
-    class function DefaultGridFontSize: Integer;
+    CLASS FUNCTION DefaultGridHeaderFontSize: Integer;
+    CLASS FUNCTION DefaultGridFontSize: Integer;
 
-    class function DefaultGridHeaderFontName: String;
-    class function DefaultGridMonospaceFontName: String;
-    class function DefaultGridFontName: String;
+    CLASS FUNCTION DefaultGridHeaderFontName: STRING;
+    CLASS FUNCTION DefaultGridMonospaceFontName: STRING;
+    CLASS FUNCTION DefaultGridFontName: STRING;
 
-    class function UserName: String;
-  end;
+    CLASS FUNCTION UserName: STRING;
+  END;
 
-implementation
+IMPLEMENTATION
 
-uses
+USES
    ExeInfo
    ;
 
 { TAppGlobals }
 
-class function TAppGlobals.AppFullName: String;
-begin
+CLASS FUNCTION TAppGlobals.AppFullName: STRING;
+BEGIN
   Result := AppTitle + ' (' + AppVersion + ')';
-end;
+END;
 
-class function TAppGlobals.AppTitle: String;
-var
+CLASS FUNCTION TAppGlobals.AppTitle: STRING;
+VAR
   LExeInfo: TExeInfo;
 
-begin
+BEGIN
   Result := '';
 
-  LExeInfo := TExeInfo.Create(nil);
-  try
+  LExeInfo := TExeInfo.Create(NIL);
+  TRY
     Result := LExeInfo.ProductName;
-  finally
+  FINALLY
     LExeInfo.Free;
-  end;
-end;
+  END;
+END;
 
-class function TAppGlobals.AppVersion: String;
-var
+CLASS FUNCTION TAppGlobals.AppVersion: STRING;
+VAR
   LExeInfo: TExeInfo;
 
-begin
+BEGIN
   Result := '';
 
-  LExeInfo := TExeInfo.Create(nil);
-  try
+  LExeInfo := TExeInfo.Create(NIL);
+  TRY
     Result := LExeInfo.FileVersion;
-  finally
+  FINALLY
     LExeInfo.Free;
-  end;
-end;
+  END;
+END;
 
-class function TAppGlobals.DefaultGridFontName: String;
-begin
+CLASS FUNCTION TAppGlobals.DefaultGridFontName: STRING;
+BEGIN
   Result := 'Noto Sans'
-end;
+END;
 
-class function TAppGlobals.DefaultGridFontSize: Integer;
-begin
+CLASS FUNCTION TAppGlobals.DefaultGridFontSize: Integer;
+BEGIN
   Result := 11;
-end;
+END;
 
-class function TAppGlobals.DefaultGridHeaderFontName: String;
-begin
+CLASS FUNCTION TAppGlobals.DefaultGridHeaderFontName: STRING;
+BEGIN
   Result := 'Arial';
-end;
+END;
 
-class function TAppGlobals.DefaultGridHeaderFontSize: Integer;
-begin
+CLASS FUNCTION TAppGlobals.DefaultGridHeaderFontSize: Integer;
+BEGIN
   Result := 12;
-end;
+END;
 
-class function TAppGlobals.DefaultGridMonospaceFontName: String;
-begin
+CLASS FUNCTION TAppGlobals.DefaultGridMonospaceFontName: STRING;
+BEGIN
  Result := 'Cascadia Code';
-end;
+END;
 
-class function TAppGlobals.UserName: String;
-var
+CLASS FUNCTION TAppGlobals.UserName: STRING;
+VAR
   LExeInfo: TExeInfo;
 
-begin
+BEGIN
   Result := '';
 
-  LExeInfo := TExeInfo.Create(nil);
-  try
+  LExeInfo := TExeInfo.Create(NIL);
+  TRY
     Result := LExeInfo.UserName;
-  finally
+  FINALLY
     LExeInfo.Free;
-  end;
-end;
-end.
+  END;
+END;
+END.

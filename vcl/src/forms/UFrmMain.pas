@@ -14,11 +14,11 @@
 {* The author and the company disclaim all liabilities for any damages or       *}
 {* losses arising from the use or misuse of this code. Use at your own risk.    *}
 {********************************************************************************}
-unit UFrmMain;
+UNIT UFrmMain;
 
-interface
+INTERFACE
 
-uses
+USES
    Winapi.Windows
  , Winapi.Messages
 
@@ -58,8 +58,8 @@ uses
 
   ;
 
-type
-  TForm1 = class(TForm)
+TYPE
+  TForm1 = CLASS(TForm)
     Documents: TAureliusDataset;
     DocumentsSelf: TAureliusEntityField;
     DocumentsId: TIntegerField;
@@ -72,13 +72,13 @@ type
     { Private-Deklarationen }
   public
     { Public-Deklarationen }
-  end;
+  END;
 
-var
+VAR
   Form1: TForm1;
 
-implementation
+IMPLEMENTATION
 
 {$R *.dfm}
 
-end.
+END.

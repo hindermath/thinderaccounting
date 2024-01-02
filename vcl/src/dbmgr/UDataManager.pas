@@ -14,11 +14,11 @@
 {* The author and the company disclaim all liabilities for any damages or       *}
 {* losses arising from the use or misuse of this code. Use at your own risk.    *}
 {********************************************************************************}
-unit UDataManager;
+UNIT UDataManager;
 
-interface
+INTERFACE
 
-uses
+USES
     System.SysUtils
   , System.Classes
 
@@ -58,36 +58,36 @@ uses
 
   ;
 
-type
-  TDataManager = class(TDataModule)
+TYPE
+  TDataManager = CLASS(TDataModule)
     Connection: TAureliusConnection;
     FDConnection: TFDConnection;
 
     SQLiteUnits: TFDPhysSQLiteDriverLink;
 
     MemConnection: TAureliusConnection;
-    procedure DataModuleCreate(Sender: TObject);
+    PROCEDURE DataModuleCreate(Sender: TObject);
   private
     { Private-Deklarationen }
     FMemoryConnection: IDBConnection;
 
-    function GetConnection: IDBConnection;
-    function GetDatabaseManager: TDatabaseManager;
+    FUNCTION GetConnection: IDBConnection;
+    FUNCTION GetDatabaseManager: TDatabaseManager;
   public
     { Public-Deklarationen }
-    procedure CreateDatabase;
-    procedure UpdateDatabase;
+    PROCEDURE CreateDatabase;
+    PROCEDURE UpdateDatabase;
 
-    procedure CreateTemporaryDatabase;
+    PROCEDURE CreateTemporaryDatabase;
 
-    property DatabaseManager: TDatabaseManager read GetDatabaseManager;
-  end;
+    PROPERTY DatabaseManager: TDatabaseManager read GetDatabaseManager;
+  END;
 
-var
+VAR
   DataManager: TDataManager;
 
-implementation
-uses
+IMPLEMENTATION
+USES
   UAppSettings
   ;
 
@@ -95,62 +95,62 @@ uses
 
 {$R *.dfm}
 
-function TDataManager.GetConnection: IDBConnection;
-begin
+FUNCTION TDataManager.GetConnection: IDBConnection;
+BEGIN
   Result := Connection.CreateConnection;
-end;
+END;
 
-function TDataManager.GetDatabaseManager: TDatabaseManager;
-begin
+FUNCTION TDataManager.GetDatabaseManager: TDatabaseManager;
+BEGIN
   Result := TDatabaseManager.Create(GetConnection);
-end;
+END;
 
-procedure TDataManager.CreateDatabase;
-begin
+PROCEDURE TDataManager.CreateDatabase;
+BEGIN
   {$IFDEF DEBUG}
-  var LDatabaseManager := DatabaseManager;
-  try
+  VAR LDatabaseManager := DatabaseManager;
+  TRY
     LDatabaseManager.DestroyDatabase;
     LDatabaseManager.BuildDatabase;
-  finally
+  FINALLY
     LDatabaseManager.Free;
-  end;
+  END;
   {$ENDIF}
-end;
+END;
 
-procedure TDataManager.UpdateDatabase;
-var
+PROCEDURE TDataManager.UpdateDatabase;
+VAR
   LDatabaseManager: TDatabaseManager;
-begin
+BEGIN
   LDatabaseManager := DatabaseManager;
-  try
+  TRY
     LDatabaseManager.UpdateDatabase;
-  finally
+  FINALLY
     LDatabaseManager.Free;
-  end;
-end;
+  END;
+END;
 
-procedure TDataManager.CreateTemporaryDatabase;
-begin
-  var LDataBase := TDatabaseManager.Create(
+PROCEDURE TDataManager.CreateTemporaryDatabase;
+BEGIN
+  VAR LDataBase := TDatabaseManager.Create(
     FMemoryConnection,
     TMappingExplorer.Get('Temporary')
   );
-  try
+  TRY
     LDataBase.BuildDatabase;
-  finally
+  FINALLY
     LDataBase.Free;
-  end;
-end;
+  END;
+END;
 
-procedure TDataManager.DataModuleCreate(Sender: TObject);
-begin
+PROCEDURE TDataManager.DataModuleCreate(Sender: TObject);
+BEGIN
   TAppSettings.Shared.GetDatabaseParams(FDConnection.Params);
 
   Connection.AdaptedConnection := FDConnection;
 
   FMemoryConnection := MemConnection.CreateConnection;
   CreateTemporaryDatabase;
-end;
+END;
 
-end.
+END.

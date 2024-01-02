@@ -14,10 +14,10 @@
 {* The author and the company disclaim all liabilities for any damages or       *}
 {* losses arising from the use or misuse of this code. Use at your own risk.    *}
 {********************************************************************************}
-unit UCustomer;
+UNIT UCustomer;
 
-interface
-uses
+INTERFACE
+USES
    Aurelius.Mapping.AutoMapping
  , Aurelius.Mapping.Attributes
  , Aurelius.Mapping.Metadata
@@ -31,51 +31,51 @@ uses
 
  ;
 
-type
+TYPE
   [Entity]
   [Automapping]
-  TCustomer = class
+  TCustomer = CLASS
   private
     FId: Integer;
     [Column('Address',[], 2048)]
-    FAddress: String;
-    FContact: String;
-    FEmail: String;
+    FAddress: STRING;
+    FContact: STRING;
+    FEmail: STRING;
     [Column('Name', [TColumnProp.Unique])]
-    FName: String;
+    FName: STRING;
 
-    function GetAddressExcel: String;
+    FUNCTION GetAddressExcel: STRING;
 
   public
-    constructor Create;
+    CONSTRUCTOR Create;
 
-    property Id: Integer read FId write FId;
-    property Address: String read FAddress write FAddress;
-    property Contact: String read FContact write FContact;
-    property EMail: String read FEmail write FEmail;
-    property Name: String read FName write FName;
-    property AddressExcel: String read GetAddressExcel;
+    PROPERTY Id: Integer read FId write FId;
+    PROPERTY Address: STRING read FAddress write FAddress;
+    PROPERTY Contact: STRING read FContact write FContact;
+    PROPERTY EMail: STRING read FEmail write FEmail;
+    PROPERTY Name: STRING read FName write FName;
+    PROPERTY AddressExcel: STRING read GetAddressExcel;
 
-  end;
+  END;
 
-implementation
-const
+IMPLEMENTATION
+CONST
   cCarriageReturn = #13;
 
-constructor TCustomer.Create;
-begin
-  FAddress  := String.Empty;
-  FContact  := String.Empty;
-  FEmail    := String.Empty;
-  FName     := String.Empty;
-end;
+CONSTRUCTOR TCustomer.Create;
+BEGIN
+  FAddress  := STRING.Empty;
+  FContact  := STRING.Empty;
+  FEmail    := STRING.Empty;
+  FName     := STRING.Empty;
+END;
 
-function TCustomer.GetAddressExcel: string;
-begin
-  Result := Address.Replace(cCarriageReturn, String.Empty);
-end;
+FUNCTION TCustomer.GetAddressExcel: STRING;
+BEGIN
+  Result := Address.Replace(cCarriageReturn, STRING.Empty);
+END;
 
-initialization
+INITIALIZATION
   RegisterEntity(TCustomer);
 
-end.
+END.

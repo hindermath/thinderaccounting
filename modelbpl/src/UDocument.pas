@@ -14,10 +14,10 @@
 {* The author and the company disclaim all liabilities for any damages or       *}
 {* losses arising from the use or misuse of this code. Use at your own risk.    *}
 {********************************************************************************}
-unit UDocument;
+UNIT UDocument;
 
-interface
-uses
+INTERFACE
+USES
    Aurelius.Mapping.AutoMapping
  , Aurelius.Mapping.Attributes
  , Aurelius.Mapping.Metadata
@@ -31,39 +31,39 @@ uses
 
  ;
 
-type
+TYPE
   [Entity]
   [Automapping]
-  TDocument = class
+  TDocument = CLASS
   private
     FId: Integer;
     [Column('Document', [TColumnProp.Lazy])]
     FDocument: TBlob;
-    FOriginalFilename: String;
+    FOriginalFilename: STRING;
 
-    function GetKeyFilename: String;
+    FUNCTION GetKeyFilename: STRING;
 
   public
-    property Id: Integer read FId write FId;
-    property Document: TBlob read FDocument write FDocument;
-    property OriginalFilename: String
+    PROPERTY Id: Integer read FId write FId;
+    PROPERTY Document: TBlob read FDocument write FDocument;
+    PROPERTY OriginalFilename: STRING
       read FOriginalFilename
       write FOriginalFilename;
-    property KeyFilename: String read GetKeyFilename;
+    PROPERTY KeyFilename: STRING read GetKeyFilename;
 
-  end;
+  END;
 
-implementation
-uses
+IMPLEMENTATION
+USES
   System.IOUtils
   ;
 
-function TDocument.GetKeyFilename: String;
-begin
+FUNCTION TDocument.GetKeyFilename: STRING;
+BEGIN
   Result := TPath.GetFileNameWithoutExtension(FOriginalFilename);
-end;
+END;
 
-initialization
+INITIALIZATION
   RegisterEntity(TDocument);
 
-end.
+END.

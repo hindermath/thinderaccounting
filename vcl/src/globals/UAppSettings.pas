@@ -14,75 +14,75 @@
 {* The author and the company disclaim all liabilities for any damages or       *}
 {* losses arising from the use or misuse of this code. Use at your own risk.    *}
 {********************************************************************************}
-unit UAppSettings;
+UNIT UAppSettings;
 
-interface
+INTERFACE
 
-uses
+USES
     System.Classes
   , System.SysUtils
   , System.Generics.Collections
   , System.IniFiles
   ;
 
-type
-  TAppSettings = class
+TYPE
+  TAppSettings = CLASS
     strict private
-      class var FInstance: TAppSettings;
+      CLASS VAR FInstance: TAppSettings;
 
-    FIniFileName: String;
+    FIniFileName: STRING;
     FIniFile: TIniFile;
 
     public
 
-      constructor Create;
-      destructor Destroy; override;
+      CONSTRUCTOR Create;
+      DESTRUCTOR Destroy; override;
 
-      function IsLaunchPossible: Boolean;
+      FUNCTION IsLaunchPossible: Boolean;
 
-      procedure GetDatabaseParams( AParams: TStrings );
+      PROCEDURE GetDatabaseParams( AParams: TStrings );
 
-      function WebserviceBaseUrl: String;
+      FUNCTION WebserviceBaseUrl: STRING;
 
-      class function Shared: TAppSettings;
-      class destructor Destroy;
+      CLASS FUNCTION Shared: TAppSettings;
+      CLASS DESTRUCTOR Destroy;
 
-  end;
+  END;
 
-implementation
+IMPLEMENTATION
 
-uses
+USES
     System.IOUtils
   ;
 
 
-const
+CONST
   SECTION_DATABASE = 'Database';
 
 { TAppSettings }
 
-constructor TAppSettings.Create;
-begin
-  inherited;
+CONSTRUCTOR TAppSettings.Create;
+BEGIN
+  INHERITED;
 
   FIniFilename := TPath.Combine( TPath.GetLibraryPath, 'settings.ini' );
 
   FIniFile := TIniFile.Create(FIniFilename);
-end;
+END;
 
-class destructor TAppSettings.Destroy;
-begin
+CLASS DESTRUCTOR TAppSettings.Destroy;
+BEGIN
   FInstance.Free;
-end;
+END;
 
 
-procedure TAppSettings.GetDatabaseParams(AParams: TStrings);
-var
+PROCEDURE TAppSettings.GetDatabaseParams(AParams: TStrings);
+VAR
   LParams: TStrings;
 
-begin
+BEGIN
   LParams := TStringlist.Create;
-  try
+  TRY
     FIniFile.ReadSectionValues(SECTION_DATABASE, LParams);
 
     LParams.Text := LParams.Text.Replace('{APP}', TPath.GetLibraryPath );
@@ -90,48 +90,48 @@ begin
     LParams.Text := LParams.Text.Replace('{DOCUMENTS}', TPath.GetDocumentsPath );
 
     AParams.Text := LParams.Text;
-  finally
+  FINALLY
     LParams.Free;
-  end;
-end;
+  END;
+END;
 
-function TAppSettings.IsLaunchPossible: Boolean;
-var
+FUNCTION TAppSettings.IsLaunchPossible: Boolean;
+VAR
   LParams: TStringlist;
 
-begin
+BEGIN
   Result := False;
 
   // quick sanity test that database configuration exists
   LParams := TStringList.Create;
-  try
+  TRY
     FIniFile.ReadSectionValues(SECTION_DATABASE, LParams);
     Result := LParams.Count > 0;
-  finally
+  FINALLY
     LParams.Free;
-  end;
-end;
+  END;
+END;
 
-destructor TAppSettings.Destroy;
-begin
+DESTRUCTOR TAppSettings.Destroy;
+BEGIN
   FIniFile.Free;
 
-  inherited;
-end;
+  INHERITED;
+END;
 
-class function TAppSettings.Shared: TAppSettings;
-begin
-  if not Assigned( FInstance ) then
-  begin
+CLASS FUNCTION TAppSettings.Shared: TAppSettings;
+BEGIN
+  IF NOT Assigned( FInstance ) THEN
+  BEGIN
     FInstance := TAppSettings.Create;
-  end;
+  END;
 
   Result := FInstance;
-end;
+END;
 
-function TAppSettings.WebserviceBaseUrl: String;
-begin
+FUNCTION TAppSettings.WebserviceBaseUrl: STRING;
+BEGIN
   Result := FIniFile.ReadString('API', 'BaseURL', '' );
-end;
+END;
 
-end.
+END.
