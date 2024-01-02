@@ -32,8 +32,8 @@ USES
 
  ;
 
-type
-  TInvoice = class;
+TYPE
+  TInvoice = CLASS;
 
   TInvoiceStatus = (
     ReadyItems,
@@ -45,7 +45,7 @@ type
 
   [Entity]
   [Automapping]
-  TInvoicePayment = class
+  TInvoicePayment = CLASS
   private
     FId: Integer;
     FPaidOn: TDate;
@@ -53,89 +53,112 @@ type
     [Association([], CascadeTypeAllButRemove)]
     FInvoice: TInvoice;
   public
-    constructor Create;
+    CONSTRUCTOR Create;
 
-    property ID: Integer read FId write FId;
-    property PaidOn: TDate read FPaidOn write FPaidOn;
-    property Amount: Double read FAmount write FAmount;
-    property Invoice: TInvoice read FInvoice write FInvoice;
-  end;
+    PROPERTY ID: Integer read FId write FId;
+    PROPERTY PaidOn: TDate read FPaidOn write FPaidOn;
+    PROPERTY Amount: Double read FAmount write FAmount;
+    PROPERTY Invoice: TInvoice read FInvoice write FInvoice;
+  END;
+
+  TInvoicePayments = CLASS( TList<TInvoicePayment> )
+  public
+    FUNCTION LastPaymentDate: NullableDate;
+  END;
 
   [Entity]
   [Automapping]
-  TInvoice = class
-  private
-
-  public
-
-  end;
-
-  TInvoicePayments = class( TList<TInvoicePayment> )
-  public
-    function LastPaymentDate: NullableDate;
-  end;
-
-  [Entity]
-  [Automapping]
-  TInvoiceItem = class
+  TInvoiceItem = CLASS
   private
     FCategory: Integer;
     [Column('Description', [], 5000)]
-    FDescription: String;
+    FDescription: STRING;
     FId: Integer;
     FIdx: Integer;
     [Association([], CascadeTypeAllButRemove)]
     FInvoice: TInvoice;
     FQuantity: Integer;
     FValue: Integer;
-    function GetTotalValue: Double;
+    FUNCTION GetTotalValue: Double;
 
   public
-    property Category: Integer read FCategory write FCategory;
-    property Description: String read FDescription write FDescription;
+    PROPERTY Category: Integer read FCategory write FCategory;
+    PROPERTY Description: STRING read FDescription write FDescription;
+    PROPERTY Id: Integer read FId write FId;
+    PROPERTY Idx: Integer read FIdx write FIdx;
+    PROPERTY Invoice: TInvoice read FInvoice write FInvoice;
+    PROPERTY Quantity: Integer read FQuantity write FQuantity;
+    PROPERTY Value: Integer read FValue write FValue;
+
+  END;
+
+  TInvoiceItems = TList<TInvoiceItem>;
+
+  [Entity]
+  [Automapping]
+  TInvoice = CLASS
+  private
+    FDueOn: Integer;
+    FId: Integer;
+    FIssuedOn: TDate;
+    FNewProperty: Integer;
+    [Column('Number', [TColumnProp.Unique])]
+    FNumber: Integer;
+
+  public
+    constructor Create;
+    destructor Destroy; override;
+    property DueOn: Integer read FDueOn write FDueOn;
     property Id: Integer read FId write FId;
-    property Idx: Integer read FIdx write FIdx;
-    property Invoice: TInvoice read FInvoice write FInvoice;
-    property Quantity: Integer read FQuantity write FQuantity;
-    property Value: Integer read FValue write FValue;
+    property IssuedOn: TDate read FIssuedOn write FIssuedOn;
+    property Number: Integer read FNumber write FNumber;
 
-
-
-  end;
+  END;
 
 IMPLEMENTATION
 
-constructor TInvoicePayment.Create;
-begin
-  inherited;
+CONSTRUCTOR TInvoicePayment.Create;
+BEGIN
+  INHERITED;
 
-end;
+END;
 
-function TInvoicePayments.LastPaymentDate: NullableDate;
-begin
-  if self.Count = 0 then
-  begin
+FUNCTION TInvoicePayments.LastPaymentDate: NullableDate;
+BEGIN
+  IF self.Count = 0 THEN
+  BEGIN
     Result := SNull;
     Exit;
-  end;
+  END;
 
   Result := self.Items[0].PaidOn;
 
-  for var i := 1 to self.Count - 1 do
-  begin
-    var LPayment := self.Items[i];
-    if Result < LPayment.PaidOn then
+  FOR VAR i := 1 TO self.Count - 1 DO
+  BEGIN
+    VAR LPayment := self.Items[i];
+    IF Result < LPayment.PaidOn THEN
       Result := LPayment.PaidOn;
-  end;
-end;
+  END;
+END;
 
-function TInvoiceItem.GetTotalValue: Double;
-begin
+FUNCTION TInvoiceItem.GetTotalValue: Double;
+BEGIN
   Result := Quantity * Value;
+END;
+
+constructor TInvoice.Create;
+begin
+  inherited Create;
 end;
 
-initialization
+destructor TInvoice.Destroy;
+begin
+  inherited Destroy;
+end;
+
+
+INITIALIZATION
   RegisterEntity(TInvoicePayment);
   RegisterEntity(TInvoice);
-
+  RegisterEntity(TInvoiceItem);
 END.
