@@ -19,22 +19,28 @@ UNIT UInvoice;
 INTERFACE
 
 USES
-  Aurelius.Mapping.AutoMapping, Aurelius.Mapping.Attributes,
-  Aurelius.Mapping.Metadata, Aurelius.Mapping.Explorer, Aurelius.Types.Blob,
-  Aurelius.Types.Proxy
+      Aurelius.Mapping.AutoMapping
+    , Aurelius.Mapping.Attributes
+    , Aurelius.Mapping.Metadata
+    , Aurelius.Mapping.Explorer
+    , Aurelius.Types.Blob
+    , Aurelius.Types.Proxy
 
     , Bcl.Types.Nullable
 
-    , System.SysUtils, System.DateUtils, System.Generics.Collections
+    , System.SysUtils
+    , System.DateUtils
+    , System.Generics.Collections
 
-    , UCustomer, UTransaction
+    , UCustomer
+    , UTransaction
 
     ;
 
 TYPE
   TInvoice = CLASS;
 
-  [Automapping]
+  [AutoMapping]
   TInvoiceStatus = (ReadyItems, ReadyPayments, ReadyProcess, Processed,
     Overpaid);
 
@@ -85,6 +91,9 @@ TYPE
     PROPERTY Quantity: Integer read FQuantity write FQuantity;
     PROPERTY Value: Integer read FValue write FValue;
 
+    PROPERTY TotalValue: Double read GetTotalValue;
+
+
   END;
 
   TInvoiceItems = TList<TInvoiceItem>;
@@ -115,16 +124,19 @@ TYPE
   public
     CONSTRUCTOR Create;
     DESTRUCTOR Destroy; override;
-    function GetAmountDue: Double;
-    function GetAmountPaid: Double;
-    function GetBillTo: string;
-    function GetCanModify: Boolean;
-    function GetCustomer: TCustomer;
-    function GetStatus: TInvoiceStatus;
-    function GetStatusText: string;
-    function GetTotalAmount: Double;
+    FUNCTION GetAmountDue: Double;
+    FUNCTION GetAmountPaid: Double;
+    FUNCTION GetBillTo: STRING;
+    FUNCTION GetCanModify: Boolean;
+    FUNCTION GetCustomer: TCustomer;
+    FUNCTION GetItems: TInvoiceItems;
+    FUNCTION GetPayments: TInvoicePayments;
+    FUNCTION GetStatus: TInvoiceStatus;
+    FUNCTION GetStatusText: STRING;
+    FUNCTION GetTotalAmount: Double;
+    FUNCTION GetTransactions: TTransactions;
 
-    procedure SetCustomer(const Value: TCustomer);
+    PROCEDURE SetCustomer(CONST Value: TCustomer);
 
     PROPERTY ID: Integer read FId write FId;
     PROPERTY Number: Integer read FNumber write FNumber;
@@ -139,6 +151,10 @@ TYPE
     PROPERTY Status: TInvoiceStatus read GetStatus;
     PROPERTY StatusText: STRING read GetStatusText;
     PROPERTY CanModify: Boolean read GetCanModify;
+    PROPERTY Items: TInvoiceItems read GetItems;
+    PROPERTY Payments: TInvoicePayments read GetPayments;
+    PROPERTY Transactions: TTransactions read GetTransactions;
+
 
   END;
 
@@ -195,63 +211,77 @@ BEGIN
   INHERITED;
 END;
 
-function TInvoice.GetAmountDue: Double;
-begin
-  //Result := ;
-  // TODO -cMM: TInvoice.GetAmountDue default body inserted
-end;
+FUNCTION TInvoice.GetAmountDue: Double;
+BEGIN
+  Result := TotalAmount + AmountPaid;
+END;
 
-function TInvoice.GetAmountPaid: Double;
-begin
-  //Result := ;
-  // TODO -cMM: TInvoice.GetAmountPaid default body inserted
-end;
+FUNCTION TInvoice.GetAmountPaid: Double;
+BEGIN
+  Result := 0;
+  FOR VAR LPayment IN self.Payments DO
+      Result := Result + LPayment.FAmount;
+END;
 
-function TInvoice.GetBillTo: string;
-begin
-  //Result := ;
-  // TODO -cMM: TInvoice.GetBillTo default body inserted
-end;
+FUNCTION TInvoice.GetBillTo: STRING;
+BEGIN
+  Result := STRING.Empty;
 
-function TInvoice.GetCanModify: Boolean;
-begin
-  //Result := ;
-  // TODO -cMM: TInvoice.GetCanModify default body inserted
-end;
+  IF Assigned( self.Customer ) THEN
+    Result := self.Customer.AddressExcel;
+END;
 
-function TInvoice.GetCustomer: TCustomer;
-begin
-  //Result := ;
-  // TODO -cMM: TInvoice.GetCustomer default body inserted
-end;
+FUNCTION TInvoice.GetCanModify: Boolean;
+BEGIN
+  Result := (Transactions.Count = 0) AND (Payments.Count = 0);
+END;
 
-function TInvoice.GetStatus: TInvoiceStatus;
-begin
-  //Result := ;
+FUNCTION TInvoice.GetCustomer: TCustomer;
+BEGIN
+  Result := FCustomer.Value;
+END;
+
+FUNCTION TInvoice.GetItems: TInvoiceItems;
+BEGIN
+  Result := FItems.Value;
+END;
+
+FUNCTION TInvoice.GetPayments: TInvoicePayments;
+BEGIN
+  Result := FPayments.Value;
+END;
+
+FUNCTION TInvoice.GetStatus: TInvoiceStatus;
+BEGIN
+  // Result := ;
   // TODO -cMM: TInvoice.GetStatus default body inserted
-end;
+END;
 
-function TInvoice.GetStatusText: string;
-begin
-  //Result := ;
+FUNCTION TInvoice.GetStatusText: STRING;
+BEGIN
+  // Result := ;
   // TODO -cMM: TInvoice.GetStatusText default body inserted
-end;
+END;
 
-function TInvoice.GetTotalAmount: Double;
-begin
-  //Result := ;
-  // TODO -cMM: TInvoice.GetTotalAmount default body inserted
-end;
+FUNCTION TInvoice.GetTotalAmount: Double;
+BEGIN
+  Result := 0;
+  FOR VAR LItem IN Items DO
+    Result := Result + LItem.TotalValue;
+END;
 
-procedure TInvoice.SetCustomer(const Value: TCustomer);
-begin
-  // TODO -cMM: TInvoice.SetCustomer default body inserted
-end;
+FUNCTION TInvoice.GetTransactions: TTransactions;
+BEGIN
+  Result := FTransactions.Value;
+END;
+
+PROCEDURE TInvoice.SetCustomer(CONST Value: TCustomer);
+BEGIN
+  FCustomer.Value := Value;
+END;
 
 INITIALIZATION
 
-RegisterEntity(TInvoicePayment);
 RegisterEntity(TInvoice);
-RegisterEntity(TInvoiceItem);
 
 END.
