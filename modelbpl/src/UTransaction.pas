@@ -79,6 +79,8 @@ TYPE
 		PROPERTY AmountTotal: Double read GetAmountTotal;
 	END;
 
+  TTransactions = TList<TTransaction>;
+
 IMPLEMENTATION
 
 CONSTRUCTOR TTransaction.Create;
