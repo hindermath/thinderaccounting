@@ -110,7 +110,6 @@ TYPE
     [ManyValuedAssociation([TAssociationProp.Lazy], CascadeTypeAll, 'FInvoice')]
     [OrderBy('Idx')]
     FItems: Proxy<TInvoiceItems>;
-    FNewProperty: Integer;
     [Column('Number', [TColumnProp.Unique])]
     FNumber: Integer;
     [ManyValuedAssociation([TAssociationProp.Lazy], CascadeTypeAll, 'FInvoice')]
@@ -253,14 +252,31 @@ END;
 
 FUNCTION TInvoice.GetStatus: TInvoiceStatus;
 BEGIN
-  // Result := ;
-  // TODO -cMM: TInvoice.GetStatus default body inserted
+  Result := TInvoiceStatus.ReadyItems;
+  IF self.TotalAmount > 0 THEN
+  BEGIN
+    IF self.AmountDue > 0 THEN
+      Result := TInvoiceStatus.ReadyPayments
+    ELSE
+      IF self.AmountDue < 0 THEN
+        Result := TInvoiceStatus.Overpaid
+      ELSE
+        IF self.Transactions.Count = 0 THEN
+          Result := TInvoiceStatus.ReadyProcess
+        ELSE
+          Result := TInvoiceStatus.Processed
+  END;
 END;
 
 FUNCTION TInvoice.GetStatusText: STRING;
 BEGIN
-  // Result := ;
-  // TODO -cMM: TInvoice.GetStatusText default body inserted
+  CASE Status OF
+    ReadyItems: Result := 'Add items';
+    ReadyPayments: Result := 'Make payments';
+    ReadyProcess: Result := 'Ready to process';
+    Processed: Result := 'Processed';
+    Overpaid:  Result := 'Overpaid';
+  END;
 END;
 
 FUNCTION TInvoice.GetTotalAmount: Double;
@@ -281,7 +297,6 @@ BEGIN
 END;
 
 INITIALIZATION
-
-RegisterEntity(TInvoice);
+  RegisterEntity(TInvoice);
 
 END.
