@@ -2,14 +2,14 @@ program ThinderAccounting;
 
 uses
   System.UITypes,
-
   Vcl.Forms,
   Vcl.Dialogs,
-
-  UFrmMain in 'src\forms\UFrmMain.pas' {Form1},
+  UFrmMain in 'src\forms\UFrmMain.pas' {FrmMain},
   UAppGlobals in 'src\globals\UAppGlobals.pas',
   UAppSettings in 'src\globals\UAppSettings.pas',
-  UDataManager in 'src\dbmgr\UDataManager.pas' {DataManager: TDataModule};
+  UDataManager in 'src\dbmgr\UDataManager.pas' {DataManager: TDataModule},
+  UControlStorage in 'src\tools\UControlStorage.pas',
+  UFrmBase in 'src\forms\UFrmBase.pas' {FrmBase};
 
 {$R *.res}
 
@@ -18,8 +18,8 @@ begin
   begin
     Application.Initialize;
     Application.MainFormOnTaskbar := True;
-    Application.CreateForm(TForm1, Form1);
-  Application.CreateForm(TDataManager, DataManager);
+    Application.CreateForm(TFrmMain, FrmMain);
+  Application.CreateForm(TFrmBase, FrmBase);
   Application.Run;
   end
   else

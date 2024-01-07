@@ -72,9 +72,9 @@
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
-        <VerInfo_Build>7</VerInfo_Build>
+        <VerInfo_Build>13</VerInfo_Build>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.7;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.13;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <VerInfo_Locale>1033</VerInfo_Locale>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
@@ -91,13 +91,18 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="src\forms\UFrmMain.pas">
-            <Form>Form1</Form>
+            <Form>FrmMain</Form>
         </DCCReference>
         <DCCReference Include="src\globals\UAppGlobals.pas"/>
         <DCCReference Include="src\globals\UAppSettings.pas"/>
         <DCCReference Include="src\dbmgr\UDataManager.pas">
             <Form>DataManager</Form>
             <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="src\tools\UControlStorage.pas"/>
+        <DCCReference Include="src\forms\UFrmBase.pas">
+            <Form>FrmBase</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <None Include="..\bin\settings.ini"/>
         <BuildConfiguration Include="Base">

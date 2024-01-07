@@ -59,7 +59,7 @@ USES
   ;
 
 TYPE
-  TForm1 = CLASS(TForm)
+  TFrmMain = CLASS(TForm)
     Documents: TAureliusDataset;
     DocumentsSelf: TAureliusEntityField;
     DocumentsId: TIntegerField;
@@ -75,7 +75,7 @@ TYPE
   END;
 
 VAR
-  Form1: TForm1;
+  FrmMain: TFrmMain;
 
 IMPLEMENTATION
 
