@@ -254,7 +254,6 @@ FUNCTION TInvoice.GetStatus: TInvoiceStatus;
 BEGIN
   Result := TInvoiceStatus.ReadyItems;
   IF self.TotalAmount > 0 THEN
-  BEGIN
     IF self.AmountDue > 0 THEN
       Result := TInvoiceStatus.ReadyPayments
     ELSE
@@ -265,7 +264,6 @@ BEGIN
           Result := TInvoiceStatus.ReadyProcess
         ELSE
           Result := TInvoiceStatus.Processed
-  END;
 END;
 
 FUNCTION TInvoice.GetStatusText: STRING;
