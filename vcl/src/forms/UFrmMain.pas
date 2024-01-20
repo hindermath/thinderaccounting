@@ -60,14 +60,6 @@ USES
 
 TYPE
   TFrmMain = CLASS(TForm)
-    Documents: TAureliusDataset;
-    DocumentsSelf: TAureliusEntityField;
-    DocumentsId: TIntegerField;
-    DocumentsDocument: TBlobField;
-    DocumentsOriginalFilename: TStringField;
-    DocumentsKeyFilename: TStringField;
-    sourceDocuments: TDataSource;
-    DocumentGrid: TDBGrid;
   private
     { Private-Deklarationen }
   public
