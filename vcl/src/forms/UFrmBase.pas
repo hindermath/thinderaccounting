@@ -32,6 +32,7 @@ uses
   , Vcl.Dialogs
 
   , UDataManager
+  , UAppGlobals
 
   , Aurelius.Engine.ObjectManager
 
@@ -53,7 +54,7 @@ type
   public
     property DataManager: TDataManager read FDataManager write FDataManager;
     property ObjectManager: TObjectManager read GetObjectManager write SetObjectManager;
-    property OwnsObjectManager: Boolean read FOwnsObjectManager write FOwnsObjectManager;
+    property OwnsObjectManager: Boolean read FOwnsObjectManager;
     property StoreControls: Boolean read FStoreControls write FStoreControls;
     { Public-Deklarationen }
   end;
@@ -68,24 +69,41 @@ implementation
 constructor TFrmBase.FormCreate(Sender: TObject);
 begin
   inherited;
-  // TODO -cMM: TFrmBase.FormCreate default body inserted
+
+  if self.Caption = String.Empty then
+    Caption := TAppGlobals.AppFullName;
+
+  FDataManager := TDataManager.Shared;
+  FObjectManager := nil;
+  FOwnsObjectManager := False;
 end;
 
 destructor TFrmBase.FormDestroy(Sender: TObject);
 begin
+  if FOwnsObjectManager then
+    FObjectManager.Free;
+
   inherited;
-  // TODO -cMM: TFrmBase.FormDestroy default body inserted
 end;
 
 function TFrmBase.GetObjectManager: TObjectManager;
 begin
-//  Result := ;
-  // TODO -cMM: TFrmBase.GetObjectManager default body inserted
+  if not Assigned( FObjectManager ) then
+  begin
+    FObjectManager := DataManager.ObjectManager;
+    FOwnsObjectManager := True;
+  end;
+  Result := FObjectManager;
 end;
 
 procedure TFrmBase.SetObjectManager(const Value: TObjectManager);
 begin
-  // TODO -cMM: TFrmBase.SetObjectManager default body inserted
+  if Assigned( Value ) then
+  begin
+    FObjectManager.Free;
+    FObjectManager := Value;
+    FOwnsObjectManager := False;
+  end;
 end;
 
 end.

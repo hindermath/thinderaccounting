@@ -59,32 +59,44 @@ USES
   ;
 
 TYPE
-  TDataManager = CLASS(TDataModule)
+  TDataManager = class(TDataModule)
     Connection: TAureliusConnection;
     FDConnection: TFDConnection;
-
     SQLiteUnits: TFDPhysSQLiteDriverLink;
 
     MemConnection: TAureliusConnection;
-    PROCEDURE DataModuleCreate(Sender: TObject);
+
+    procedure DataModuleCreate(Sender: TObject);
   private
-    { Private-Deklarationen }
+    { Private declarations }
     FMemoryConnection: IDBConnection;
 
-    FUNCTION GetConnection: IDBConnection;
-    FUNCTION GetDatabaseManager: TDatabaseManager;
+    function GetConnection: IDBConnection;
+    function GetDatabaseManager: TDatabaseManager;
+    function GetObjectManager: TObjectManager;
+    function GetMemoryObjectManager: TObjectManager;
+  strict private
+    class var FInstance: TDataManager;
+
   public
-    { Public-Deklarationen }
-    PROCEDURE CreateDatabase;
-    PROCEDURE UpdateDatabase;
+    { Public declarations }
+    class destructor Destroy;
+    class function Shared: TDataManager;
 
-    PROCEDURE CreateTemporaryDatabase;
+    procedure CreateDatabase;
+    procedure UpdateDatabase;
 
-    PROPERTY DatabaseManager: TDatabaseManager read GetDatabaseManager;
-  END;
+    procedure CreateTemporaryDatabase;
 
-VAR
+    property DatabaseManager: TDatabaseManager read GetDatabaseManager;
+    property ObjectManager: TObjectManager read GetObjectManager;
+
+    property MemoryObjectManager: TObjectManager read GetMemoryObjectManager;
+  end;
+
+var
   DataManager: TDataManager;
+
 
 IMPLEMENTATION
 USES
@@ -152,5 +164,28 @@ BEGIN
   FMemoryConnection := MemConnection.CreateConnection;
   CreateTemporaryDatabase;
 END;
+
+function TDataManager.GetObjectManager: TObjectManager;
+begin
+  Result := TObjectManager.Create(GetConnection);
+end;
+
+function TDataManager.GetMemoryObjectManager: TObjectManager;
+begin
+  Result := TObjectManager.Create(GetConnection);
+end;
+
+class destructor TDataManager.Destroy;
+begin
+    FInstance.Free;
+end;
+
+class function TDataManager.Shared: TDataManager;
+begin
+  if not Assigned( FInstance ) then
+    FInstance := TDataManager.Create(nil);
+
+  Result := FInstance;
+end;
 
 END.
