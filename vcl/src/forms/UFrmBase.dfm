@@ -6,8 +6,8 @@ object FrmBase: TFrmBase
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -12
+  Font.Height = -16
   Font.Name = 'Segoe UI'
   Font.Style = []
-  TextHeight = 15
+  TextHeight = 21
 end
