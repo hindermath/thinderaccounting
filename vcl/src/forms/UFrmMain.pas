@@ -26,9 +26,12 @@ USES
  , System.Variants
  , System.Classes
  , System.Generics.Collections
+ , System.ImageList
+ , System.Actions
 
  , Bcl.Types.Nullable
  , Data.DB
+ , FolderDialog
 
  , Vcl.Graphics
  , Vcl.Controls
@@ -36,6 +39,14 @@ USES
  , Vcl.Dialogs
  , Vcl.Grids
  , Vcl.DBGrids
+ , Vcl.BaseImageCollection
+ , Vcl.ImageCollection
+ , Vcl.ImgList
+ , Vcl.VirtualImageList
+ , Vcl.StdCtrls
+ , Vcl.PlatformDefaultStyleActnCtrls
+ , Vcl.ActnList
+ , Vcl.ActnMan
 
  , FireDAC.Stan.ExprFuncs
  , FireDAC.Phys.SQLiteWrapper.Stat
@@ -56,10 +67,25 @@ USES
  , Aurelius.Bind.BaseDataset
  , Aurelius.Bind.Dataset
 
+ , UFrmBase
+
   ;
 
 TYPE
-  TFrmMain = CLASS(TForm)
+  TFrmMain = CLASS(TFrmBase)
+    Images: TVirtualImageList;
+    Collection: TImageCollection;
+    ImagesDisabled: TVirtualImageList;
+    ActionManager1: TActionManager;
+    Button1: TButton;
+    Button2: TButton;
+    Button3: TButton;
+    Button4: TButton;
+    Button5: TButton;
+    Button6: TButton;
+    SelectFolder: TFolderDialog;
+    Button7: TButton;
+    Button8: TButton;
   private
     { Private-Deklarationen }
   public
