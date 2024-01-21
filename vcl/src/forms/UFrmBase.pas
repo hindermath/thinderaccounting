@@ -14,11 +14,11 @@
 {* The author and the company disclaim all liabilities for any damages or       *}
 {* losses arising from the use or misuse of this code. Use at your own risk.    *}
 {********************************************************************************}
-unit UFrmBase;
+UNIT UFrmBase;
 
-interface
+INTERFACE
 
-uses
+USES
     Winapi.Windows
   , Winapi.Messages
 
@@ -38,10 +38,10 @@ uses
 
   ;
 
-type
-  TFrmBase = class(TForm)
-    constructor FormCreate(Sender: TObject);
-    destructor FormDestroy(Sender: TObject);
+TYPE
+  TFrmBase = CLASS(TForm)
+    CONSTRUCTOR FormCreate(Sender: TObject);
+    DESTRUCTOR FormDestroy(Sender: TObject);
   private
     FOwnsObjectManager: Boolean;
     FStoreControls: Boolean;
@@ -49,61 +49,61 @@ type
   protected
     FDataManager: TDataManager;
     FObjectManager: TObjectManager;
-    function GetObjectManager: TObjectManager;
-    procedure SetObjectManager(const Value: TObjectManager);
+    FUNCTION GetObjectManager: TObjectManager;
+    PROCEDURE SetObjectManager(CONST Value: TObjectManager);
   public
-    property DataManager: TDataManager read FDataManager write FDataManager;
-    property ObjectManager: TObjectManager read GetObjectManager write SetObjectManager;
-    property OwnsObjectManager: Boolean read FOwnsObjectManager;
-    property StoreControls: Boolean read FStoreControls write FStoreControls;
+    PROPERTY DataManager: TDataManager read FDataManager write FDataManager;
+    PROPERTY ObjectManager: TObjectManager read GetObjectManager write SetObjectManager;
+    PROPERTY OwnsObjectManager: Boolean read FOwnsObjectManager;
+    PROPERTY StoreControls: Boolean read FStoreControls write FStoreControls;
     { Public-Deklarationen }
-  end;
+  END;
 
-var
+VAR
   FrmBase: TFrmBase;
 
-implementation
+IMPLEMENTATION
 
 {$R *.dfm}
 
-constructor TFrmBase.FormCreate(Sender: TObject);
-begin
-  inherited;
+CONSTRUCTOR TFrmBase.FormCreate(Sender: TObject);
+BEGIN
+  INHERITED;
 
-  if self.Caption = String.Empty then
+  IF self.Caption = STRING.Empty THEN
     Caption := TAppGlobals.AppFullName;
 
   FDataManager := TDataManager.Shared;
-  FObjectManager := nil;
+  FObjectManager := NIL;
   FOwnsObjectManager := False;
-end;
+END;
 
-destructor TFrmBase.FormDestroy(Sender: TObject);
-begin
-  if FOwnsObjectManager then
+DESTRUCTOR TFrmBase.FormDestroy(Sender: TObject);
+BEGIN
+  IF FOwnsObjectManager THEN
     FObjectManager.Free;
 
-  inherited;
-end;
+  INHERITED;
+END;
 
-function TFrmBase.GetObjectManager: TObjectManager;
-begin
-  if not Assigned( FObjectManager ) then
-  begin
+FUNCTION TFrmBase.GetObjectManager: TObjectManager;
+BEGIN
+  IF NOT Assigned( FObjectManager ) THEN
+  BEGIN
     FObjectManager := DataManager.ObjectManager;
     FOwnsObjectManager := True;
-  end;
+  END;
   Result := FObjectManager;
-end;
+END;
 
-procedure TFrmBase.SetObjectManager(const Value: TObjectManager);
-begin
-  if Assigned( Value ) then
-  begin
+PROCEDURE TFrmBase.SetObjectManager(CONST Value: TObjectManager);
+BEGIN
+  IF Assigned( Value ) THEN
+  BEGIN
     FObjectManager.Free;
     FObjectManager := Value;
     FOwnsObjectManager := False;
-  end;
-end;
+  END;
+END;
 
-end.
+END.
