@@ -2,8 +2,8 @@ object FrmMain: TFrmMain
   Left = 0
   Top = 0
   Caption = 'FrmMain'
-  ClientHeight = 277
-  ClientWidth = 1787
+  ClientHeight = 145
+  ClientWidth = 721
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,64 +12,67 @@ object FrmMain: TFrmMain
   Font.Style = []
   TextHeight = 15
   object Button1: TButton
-    Left = 104
-    Top = 40
-    Width = 75
-    Height = 25
-    Caption = 'Button1'
+    Left = 8
+    Top = 8
+    Width = 64
+    Height = 64
+    Action = actCustomers
+    DisabledImages = ImagesDisabled
+    ImageAlignment = iaTop
+    Images = Images
     TabOrder = 0
   end
   object Button2: TButton
-    Left = 208
-    Top = 40
+    Left = 120
+    Top = 8
     Width = 75
-    Height = 25
+    Height = 64
     Caption = 'Button1'
     TabOrder = 1
   end
   object Button3: TButton
-    Left = 328
-    Top = 40
-    Width = 75
-    Height = 25
+    Left = 256
+    Top = 8
+    Width = 64
+    Height = 64
     Caption = 'Button1'
     TabOrder = 2
   end
   object Button4: TButton
-    Left = 456
-    Top = 40
-    Width = 75
-    Height = 25
+    Left = 384
+    Top = 8
+    Width = 64
+    Height = 64
     Caption = 'Button1'
     TabOrder = 3
   end
   object Button5: TButton
-    Left = 608
-    Top = 40
-    Width = 75
-    Height = 25
+    Left = 512
+    Top = 8
+    Width = 64
+    Height = 64
     Caption = 'Button1'
     TabOrder = 4
   end
   object Button6: TButton
-    Left = 720
-    Top = 40
+    Left = 632
+    Top = 8
     Width = 75
-    Height = 25
+    Height = 64
     Caption = 'Button1'
     TabOrder = 5
   end
   object Button7: TButton
-    Left = 120
-    Top = 208
+    Left = 8
+    Top = 112
     Width = 75
     Height = 25
     Caption = 'Button1'
     TabOrder = 6
   end
   object Button8: TButton
-    Left = 728
-    Top = 208
+    Left = 638
+    Top = 112
     Width = 75
     Height = 25
     Caption = 'Button1'
@@ -226,8 +229,8 @@ object FrmMain: TFrmMain
     ImageCollection = Collection
     Width = 32
     Height = 32
-    Left = 1384
-    Top = 24
+    Left = 128
+    Top = 88
   end
   object Collection: TImageCollection
     Images = <
@@ -29441,8 +29444,8 @@ object FrmMain: TFrmMain
               6082}
           end>
       end>
-    Left = 1384
-    Top = 104
+    Left = 320
+    Top = 88
   end
   object ImagesDisabled: TVirtualImageList
     AutoFill = True
@@ -29626,20 +29629,28 @@ object FrmMain: TFrmMain
     ImageCollection = Collection
     Width = 32
     Height = 32
-    Left = 1480
-    Top = 24
+    Left = 224
+    Top = 88
   end
-  object ActionManager1: TActionManager
-    Left = 1480
-    Top = 104
+  object Actions: TActionManager
+    DisabledImages = ImagesDisabled
+    Images = Images
+    Left = 416
+    Top = 88
     StyleName = 'Platform Default'
+    object actCustomers: TAction
+      Category = 'Main'
+      Caption = 'Customers'
+      ImageIndex = 11
+      ImageName = 'chat-room'
+    end
   end
   object SelectFolder: TFolderDialog
     Options = [fdoNewDialogStyle]
     DialogX = 0
     DialogY = 0
     Version = '1.1.4.1'
-    Left = 1600
-    Top = 104
+    Left = 536
+    Top = 88
   end
 end

@@ -76,7 +76,7 @@ TYPE
     Images: TVirtualImageList;
     Collection: TImageCollection;
     ImagesDisabled: TVirtualImageList;
-    ActionManager1: TActionManager;
+    Actions: TActionManager;
     Button1: TButton;
     Button2: TButton;
     Button3: TButton;
@@ -86,6 +86,7 @@ TYPE
     SelectFolder: TFolderDialog;
     Button7: TButton;
     Button8: TButton;
+    actCustomers: TAction;
   private
     { Private-Deklarationen }
   public
