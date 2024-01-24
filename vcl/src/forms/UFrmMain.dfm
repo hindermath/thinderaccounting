@@ -65,17 +65,17 @@ object FrmMain: TFrmMain
   object Button7: TButton
     Left = 8
     Top = 112
-    Width = 75
+    Width = 105
     Height = 25
-    Caption = 'Button1'
+    Caption = 'Create dictionary'
     TabOrder = 6
   end
   object Button8: TButton
-    Left = 638
+    Left = 608
     Top = 112
-    Width = 75
+    Width = 105
     Height = 25
-    Caption = 'Button1'
+    Caption = 'Create database'
     TabOrder = 7
   end
   object Images: TVirtualImageList
