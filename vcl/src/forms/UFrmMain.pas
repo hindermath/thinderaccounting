@@ -90,7 +90,7 @@ TYPE
     actInvoices: TAction;
     actReports: TAction;
     actApiaccess: TAction;
-    procedure FormShow(Sender: TObject);
+    PROCEDURE FormShow(Sender: TObject);
   private
     { Private-Deklarationen }
   public
@@ -104,11 +104,11 @@ IMPLEMENTATION
 
 {$R *.dfm}
 
-procedure TFrmMain.FormShow(Sender: TObject);
-begin
+PROCEDURE TFrmMain.FormShow(Sender: TObject);
+BEGIN
   self.BorderStyle := bsDialog;
   self.ClientWidth := btnApiaccess.Left + btnApiaccess.Width + 10;
   self.ClientHeight := btnCreateDictionary.Top - 10;
-end;
+END;
 
 END.
