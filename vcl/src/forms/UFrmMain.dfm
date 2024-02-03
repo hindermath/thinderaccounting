@@ -3,15 +3,16 @@ object FrmMain: TFrmMain
   Top = 0
   Caption = 'FrmMain'
   ClientHeight = 145
-  ClientWidth = 721
+  ClientWidth = 797
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnShow = FormShow
   TextHeight = 15
-  object Button1: TButton
+  object btnCustomers: TButton
     Left = 8
     Top = 8
     Width = 64
@@ -22,61 +23,65 @@ object FrmMain: TFrmMain
     Images = Images
     TabOrder = 0
   end
-  object Button2: TButton
+  object btnTransactions: TButton
     Left = 120
     Top = 8
     Width = 75
     Height = 64
-    Caption = 'Button1'
+    Action = actTransactions
+    DisabledImages = ImagesDisabled
+    ImageAlignment = iaTop
+    Images = Images
     TabOrder = 1
   end
-  object Button3: TButton
+  object btnInvoices: TButton
     Left = 256
     Top = 8
     Width = 64
     Height = 64
-    Caption = 'Button1'
+    Action = actInvoices
+    DisabledImages = ImagesDisabled
+    ImageAlignment = iaTop
+    Images = Images
     TabOrder = 2
   end
-  object Button4: TButton
+  object btnReports: TButton
     Left = 384
     Top = 8
     Width = 64
     Height = 64
-    Caption = 'Button1'
+    Action = actReports
+    DisabledImages = ImagesDisabled
+    ImageAlignment = iaTop
+    Images = Images
     TabOrder = 3
   end
-  object Button5: TButton
+  object btnApiaccess: TButton
     Left = 512
     Top = 8
     Width = 64
     Height = 64
-    Caption = 'Button1'
+    Action = actApiaccess
+    DisabledImages = ImagesDisabled
+    ImageAlignment = iaTop
+    Images = Images
     TabOrder = 4
   end
-  object Button6: TButton
-    Left = 632
-    Top = 8
-    Width = 75
-    Height = 64
-    Caption = 'Button1'
-    TabOrder = 5
-  end
-  object Button7: TButton
+  object btnCreateDictionary: TButton
     Left = 8
-    Top = 112
+    Top = 78
     Width = 105
     Height = 25
     Caption = 'Create dictionary'
-    TabOrder = 6
+    TabOrder = 5
   end
-  object Button8: TButton
-    Left = 608
-    Top = 112
+  object btnCreateDB: TButton
+    Left = 471
+    Top = 78
     Width = 105
     Height = 25
     Caption = 'Create database'
-    TabOrder = 7
+    TabOrder = 6
   end
   object Images: TVirtualImageList
     AutoFill = True
@@ -229,8 +234,8 @@ object FrmMain: TFrmMain
     ImageCollection = Collection
     Width = 32
     Height = 32
-    Left = 128
-    Top = 88
+    Left = 600
+    Top = 8
   end
   object Collection: TImageCollection
     Images = <
@@ -29444,8 +29449,8 @@ object FrmMain: TFrmMain
               6082}
           end>
       end>
-    Left = 320
-    Top = 88
+    Left = 600
+    Top = 80
   end
   object ImagesDisabled: TVirtualImageList
     AutoFill = True
@@ -29629,14 +29634,14 @@ object FrmMain: TFrmMain
     ImageCollection = Collection
     Width = 32
     Height = 32
-    Left = 224
-    Top = 88
+    Left = 696
+    Top = 8
   end
   object Actions: TActionManager
     DisabledImages = ImagesDisabled
     Images = Images
-    Left = 416
-    Top = 88
+    Left = 656
+    Top = 80
     StyleName = 'Platform Default'
     object actCustomers: TAction
       Category = 'Main'
@@ -29644,13 +29649,37 @@ object FrmMain: TFrmMain
       ImageIndex = 11
       ImageName = 'chat-room'
     end
+    object actTransactions: TAction
+      Category = 'Main'
+      Caption = 'Transactions'
+      ImageIndex = 2
+      ImageName = '013-banknotes'
+    end
+    object actInvoices: TAction
+      Category = 'Main'
+      Caption = 'Invoices'
+      ImageIndex = 22
+      ImageName = 'invoice'
+    end
+    object actReports: TAction
+      Category = 'Main'
+      Caption = 'Reports'
+      ImageIndex = 8
+      ImageName = 'analytics'
+    end
+    object actApiaccess: TAction
+      Category = 'Main'
+      Caption = 'API Access'
+      ImageIndex = 9
+      ImageName = 'api'
+    end
   end
   object SelectFolder: TFolderDialog
     Options = [fdoNewDialogStyle]
     DialogX = 0
     DialogY = 0
     Version = '1.1.4.1'
-    Left = 536
-    Top = 88
+    Left = 720
+    Top = 80
   end
 end

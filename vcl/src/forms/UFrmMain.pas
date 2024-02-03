@@ -77,16 +77,20 @@ TYPE
     Collection: TImageCollection;
     ImagesDisabled: TVirtualImageList;
     Actions: TActionManager;
-    Button1: TButton;
-    Button2: TButton;
-    Button3: TButton;
-    Button4: TButton;
-    Button5: TButton;
-    Button6: TButton;
+    btnCustomers: TButton;
+    btnTransactions: TButton;
+    btnInvoices: TButton;
+    btnReports: TButton;
+    btnApiaccess: TButton;
     SelectFolder: TFolderDialog;
-    Button7: TButton;
-    Button8: TButton;
+    btnCreateDictionary: TButton;
+    btnCreateDB: TButton;
     actCustomers: TAction;
+    actTransactions: TAction;
+    actInvoices: TAction;
+    actReports: TAction;
+    actApiaccess: TAction;
+    procedure FormShow(Sender: TObject);
   private
     { Private-Deklarationen }
   public
@@ -99,5 +103,12 @@ VAR
 IMPLEMENTATION
 
 {$R *.dfm}
+
+procedure TFrmMain.FormShow(Sender: TObject);
+begin
+  self.BorderStyle := bsDialog;
+  self.ClientWidth := btnApiaccess.Left + btnApiaccess.Width + 10;
+  self.ClientHeight := btnCreateDictionary.Top - 10;
+end;
 
 END.
