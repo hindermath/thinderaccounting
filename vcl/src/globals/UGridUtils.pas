@@ -30,7 +30,26 @@ uses
 
 class procedure TGridUtils.UseDefaultHeaderFont(ACollection: TCollection);
 begin
-  // TODO -cMM: UseDefaultHeaderFont default body inserted
+  for var LColumn in ACollection do
+  begin
+    if LColumn is TDBGridColumnItem then
+    begin
+      var LGridColumn := LColumn as TDBGridColumnItem;
+
+      LGridColumn.HeaderFont.Name := TAppGlobals.DefaultGridHeaderFontName;
+      LGridColumn.HeaderFont.Size := TAppGlobals.DefaultGridHeaderFontSize;
+      LGridColumn.HeaderFont.Style := [TFontStyle.fsBold];
+    end;
+
+    if LColumn is TColumn then
+    begin
+      var LGridColumn := LColumn as TColumn;
+
+      LGridColumn.Title.Font.Name := TAppGlobals.DefaultGridHeaderFontName;
+      LGridColumn.Title.Font.Size := TAppGlobals.DefaultGridHeaderFontSize;
+      LGridColumn.Title.Font.Style := [TFontStyle.fsBold];
+    end;
+  end;
 end;
 
 class procedure TGridUtils.UseDefaultFont(ACollection: TCollection);
