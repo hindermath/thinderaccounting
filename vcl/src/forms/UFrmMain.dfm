@@ -29674,6 +29674,12 @@ object FrmMain: TFrmMain
       ImageIndex = 9
       ImageName = 'api'
     end
+    object actExpandForm: TAction
+      Category = 'Main'
+      Caption = 'ExpandForm'
+      ShortCut = 16507
+      OnExecute = actExpandFormExecute
+    end
   end
   object SelectFolder: TFolderDialog
     Options = [fdoNewDialogStyle]

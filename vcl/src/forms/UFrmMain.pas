@@ -90,6 +90,8 @@ TYPE
     actInvoices: TAction;
     actReports: TAction;
     actApiaccess: TAction;
+    actExpandForm: TAction;
+    PROCEDURE actExpandFormExecute(Sender: TObject);
     PROCEDURE FormShow(Sender: TObject);
   private
     { Private-Deklarationen }
@@ -103,6 +105,14 @@ VAR
 IMPLEMENTATION
 
 {$R *.dfm}
+
+PROCEDURE TFrmMain.actExpandFormExecute(Sender: TObject);
+BEGIN
+  IF self.ClientHeight < btnCreateDictionary.Top THEN
+    self.ClientHeight := btnCreateDictionary.Top + btnCreateDictionary.Height + 10
+  ELSE
+    self.ClientHeight := btnCreateDictionary.Top - 7
+END;
 
 PROCEDURE TFrmMain.FormShow(Sender: TObject);
 BEGIN
